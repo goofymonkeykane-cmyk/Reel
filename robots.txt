@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/callback
+Disallow: /home
+Disallow: /messages
+Disallow: /settings
+Disallow: /onboarding
+
+Sitemap: https://getreel.app/sitemap.xml

@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   REEL - Design System
+   Dark cinema aesthetic
+   ============================================ */
+
+:root {
+  --bg: #08080d;
+  --bg2: #0f0f16;
+  --bg3: #14141c;
+  --surface: #1a1a24;
+  --surface2: #20202e;
+  --border: rgba(255, 255, 255, 0.06);
+  --border2: rgba(255, 255, 255, 0.11);
+  --border3: rgba(255, 255, 255, 0.2);
+  --text: #ede9e3;
+  --text2: #928ea0;
+  --text3: #4d4a58;
+  --gold: #c8a76b;
+  --gold2: #e2c87a;
+  --teal: #45bea0;
+  --red: #e05050;
+  --accent: #7b69ee;
+  --blue: #5b9cf6;
+  --green: #3db87a;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border2);
+}
+
+/* Selection */
+::selection {
+  background: rgba(123, 105, 238, 0.3);
+  color: var(--text);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.font-serif {
+  font-family: 'DM Serif Display', Georgia, serif;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   STAR RATING
+   ============================================ */
+.star-rating {
+  display: flex;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.star-rating .star {
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  transition: transform 0.1s;
+}
+
+.star-rating .star:hover {
+  transform: scale(1.2);
+}
+
+.star-rating .star.empty {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.star-rating .star.half {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 50%,
+    rgba(255, 255, 255, 0.1) 50%
+  );
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.card:hover {
+  border-color: var(--border2);
+}
+
+.poster-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  aspect-ratio: 2 / 3;
+}
+
+.poster-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.poster-card:hover img {
+  transform: scale(1.05);
+}
+
+.poster-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.poster-card:hover .overlay {
+  opacity: 1;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0a0804;
+}
+
+.btn-gold:hover {
+  background: var(--gold2);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border2);
+  color: var(--text2);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--border3);
+}
+
+.btn-accent {
+  background: rgba(123, 105, 238, 0.12);
+  border-color: rgba(123, 105, 238, 0.3);
+  color: #a99af5;
+}
+
+.btn-teal {
+  background: rgba(69, 190, 160, 0.1);
+  border-color: rgba(69, 190, 160, 0.3);
+  color: var(--teal);
+}
+
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+.input {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text3);
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+/* ============================================
+   LOADING SKELETON
+   ============================================ */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    var(--surface2) 50%,
+    var(--surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   LIVE INDICATOR
+   ============================================ */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+.toast-success {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid rgba(69, 190, 160, 0.3);
+}
+
+.toast-error {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid rgba(224, 80, 80, 0.3);
+}
